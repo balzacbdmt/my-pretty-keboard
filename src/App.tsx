@@ -1,7 +1,7 @@
 function App() {
   return (
     <>
-      <p>We are currently under dev</p>
+      <p className="font-bold">We are currently under dev</p>
     </>
   );
 }
