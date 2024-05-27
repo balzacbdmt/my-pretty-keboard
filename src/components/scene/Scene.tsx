@@ -10,7 +10,7 @@ function Scene() {
   return (
     <div className="h-screen">
       <Canvas
-        camera={{ position: [2, 2, 10], fov: 2 }}
+        camera={{ position: [2, 2, 10], fov: 1.5 }}
       >
         <directionalLight position={[2, 2, -4]} intensity={LUMINOSITY}>
           <Sphere args={[0.25]} visible={false} />
