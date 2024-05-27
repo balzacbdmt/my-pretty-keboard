@@ -12,7 +12,7 @@ function Modal({ title, text, onClose }: Props) {
       <div className="bg-white rounded-lg shadow-lg p-6 w-full max-w-md mx-2 text-black text-center">
         <h1 className="text-xl font-semibold">{title}</h1>
         <p className="my-4">{text}</p>
-        {onClose && <Button onClick={onClose} text="Close" isDisabled />}
+        {onClose && <Button onClick={onClose} text="Close" />}
       </div>
     </div>
   );
