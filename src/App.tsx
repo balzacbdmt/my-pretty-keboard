@@ -1,7 +1,12 @@
+import Modal from "./components/modal/Modal";
+
 function App() {
   return (
     <>
-      <p className="font-bold">We are currently under dev</p>
+      <Modal
+        title="Project under dev 🚧"
+        text="This web-site is under dev, please come back later 😁"
+      />
     </>
   );
 }
