@@ -1,30 +1,28 @@
-# React + TypeScript + Vite
+# ⌨️ My Pretty Keyboard ⌨️
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+This web application have to goal to help people visualize their future customized keyboard.
 
-Currently, two official plugins are available:
+# 🚀 Get started 🚀
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
-
-## Expanding the ESLint configuration
-
-If you are developing a production application, we recommend updating the configuration to enable type aware lint rules:
-
-- Configure the top-level `parserOptions` property like this:
-
-```js
-export default {
-  // other rules...
-  parserOptions: {
-    ecmaVersion: 'latest',
-    sourceType: 'module',
-    project: ['./tsconfig.json', './tsconfig.node.json'],
-    tsconfigRootDir: __dirname,
-  },
-}
+Install dependencies
+```
+npm install
 ```
 
-- Replace `plugin:@typescript-eslint/recommended` to `plugin:@typescript-eslint/recommended-type-checked` or `plugin:@typescript-eslint/strict-type-checked`
-- Optionally add `plugin:@typescript-eslint/stylistic-type-checked`
-- Install [eslint-plugin-react](https://github.com/jsx-eslint/eslint-plugin-react) and add `plugin:react/recommended` & `plugin:react/jsx-runtime` to the `extends` list
+Run the project
+```
+npm run dev
+```
+
+# 🛣️ Road map 🛣️
+
+## Mvp:
+1. Import and display blender model
+2. Create menu to update materials
+3. Create animations on pressing keys
+4. Create an export to png
+
+## Later:
+1. Improve the scene
+2. Create a demo mode
+3. Save configuration in back-end or local storage
