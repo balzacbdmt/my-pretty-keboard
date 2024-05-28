@@ -14,8 +14,8 @@ interface SetColorPayload {
 
 const initialState: ProgressState = {
   keys: "#fff",
-  letters: "#fff",
-  caseTop: "#fff",
+  letters: "#000",
+  caseTop: "#999",
   caseBottom: "#fff",
 };
 
