@@ -2,6 +2,8 @@ import Compact from "@uiw/react-color-compact";
 import { useDispatch, useSelector } from "react-redux";
 import { RootState } from "../../reducers/store";
 import { setColor } from "../../reducers/colors";
+import Switch from "../../components/switch/Switch";
+import { setKeyTestMode } from "../../reducers/settings";
 
 interface Props {
   luminosity: number;
@@ -10,7 +12,7 @@ interface Props {
 
 function Menu({ luminosity, setLuminosity }: Props) {
   const dispatch = useDispatch();
-  const colors = useSelector((state: RootState) => state.colors);
+  const { colors, settings } = useSelector((state: RootState) => state);
 
   return (
     <div className="fixed bottom-0 w-5/6 left-1/2 -translate-x-1/2 h-[180px] bg-zinc-900 p-2 rounded-t-2xl shadow-2xl flex gap-4 justify-center items-center">
@@ -26,6 +28,11 @@ function Menu({ luminosity, setLuminosity }: Props) {
           max="6"
           value={luminosity}
           onChange={(e) => setLuminosity(Number(e.target.value))}
+        />
+        <label className="font-semibold">Test mode</label>
+        <Switch
+          isOn={settings.keyTestMode}
+          handleToggle={(v) => dispatch(setKeyTestMode(v))}
         />
       </div>
       <div>
