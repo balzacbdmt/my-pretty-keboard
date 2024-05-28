@@ -30,10 +30,11 @@ function Menu({ luminosity, setLuminosity }: Props) {
         />
       </div>
       <div>
-        <label className="font-semibold" htmlFor="luminosity">
+        <label className="font-semibold" htmlFor="keys">
           Keys color
         </label>
         <Compact
+          id="keys"
           color={colors.keys}
           style={{
             backgroundColor: "#323232",
@@ -44,10 +45,11 @@ function Menu({ luminosity, setLuminosity }: Props) {
         />
       </div>
       <div>
-        <label className="font-semibold" htmlFor="luminosity">
+        <label className="font-semibold" htmlFor="letters">
           Letters color
         </label>
         <Compact
+          id="letters"
           color={colors.letters}
           style={{
             backgroundColor: "#323232",
@@ -58,10 +60,11 @@ function Menu({ luminosity, setLuminosity }: Props) {
         />
       </div>
       <div>
-        <label className="font-semibold" htmlFor="luminosity">
+        <label className="font-semibold" htmlFor="case_top">
           Case top color
         </label>
         <Compact
+          id="case_top"
           color={colors.caseTop}
           style={{
             backgroundColor: "#323232",
@@ -72,10 +75,11 @@ function Menu({ luminosity, setLuminosity }: Props) {
         />
       </div>
       <div>
-        <label className="font-semibold" htmlFor="luminosity">
-          Case top color
+        <label className="font-semibold" htmlFor="case_bottom">
+          Case bottom color
         </label>
         <Compact
+          id="case_bottom"
           color={colors.caseBottom}
           style={{
             backgroundColor: "#323232",
