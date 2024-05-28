@@ -1,10 +1,10 @@
-import Scene from "../../components/scene/Scene";
-import Modal from "../../components/modal/Modal";
+import Scene from "./views/scene/Scene";
+import Modal from "./components/modal/Modal";
 import { useState } from "react";
-import Menu from "./Menu";
+import Menu from "./views/menu/Menu";
 
 function App() {
-  const [displayWarn, setDisplayWarn] = useState(true);
+  const [displayWarn, setDisplayWarn] = useState(false);
   const [luminosity, setLuminosity] = useState(3);
 
   return (
