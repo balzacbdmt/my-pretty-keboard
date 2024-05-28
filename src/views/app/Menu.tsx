@@ -1,5 +1,8 @@
 import Compact from "@uiw/react-color-compact";
 import { useState } from "react";
+import { useDispatch, useSelector } from "react-redux";
+import { RootState } from "../../reducers/store";
+import { setColor } from "../../reducers/colors";
 
 interface Props {
   luminosity: number;
@@ -7,10 +10,8 @@ interface Props {
 }
 
 function Menu({ luminosity, setLuminosity }: Props) {
-  const [keysColor, setKeysColor] = useState("#fff");
-  const [lettersColor, setLettersColor] = useState("#fff");
-  const [caseTopColor, setCaseTopColor] = useState("#fff");
-  const [caseBottomColor, setCaseBottomColor] = useState("#fff");
+  const dispatch = useDispatch();
+  const colors = useSelector((state: RootState) => state.colors);
 
   return (
     <div className="fixed bottom-0 w-5/6 left-1/2 -translate-x-1/2 h-[180px] bg-zinc-900 p-2 rounded-t-2xl shadow-2xl flex gap-4 justify-center items-center">
@@ -33,13 +34,13 @@ function Menu({ luminosity, setLuminosity }: Props) {
           Keys color
         </label>
         <Compact
-          color={keysColor}
+          color={colors.keys}
           style={{
             backgroundColor: "#323232",
           }}
-          onChange={(color) => {
-            setKeysColor(color.hex);
-          }}
+          onChange={(color) =>
+            dispatch(setColor({ target: "keys", color: color.hex }))
+          }
         />
       </div>
       <div>
@@ -47,13 +48,13 @@ function Menu({ luminosity, setLuminosity }: Props) {
           Letters color
         </label>
         <Compact
-          color={lettersColor}
+          color={colors.letters}
           style={{
             backgroundColor: "#323232",
           }}
-          onChange={(color) => {
-            setLettersColor(color.hex);
-          }}
+          onChange={(color) =>
+            dispatch(setColor({ target: "letters", color: color.hex }))
+          }
         />
       </div>
       <div>
@@ -61,13 +62,13 @@ function Menu({ luminosity, setLuminosity }: Props) {
           Case top color
         </label>
         <Compact
-          color={caseTopColor}
+          color={colors.caseTop}
           style={{
             backgroundColor: "#323232",
           }}
-          onChange={(color) => {
-            setCaseTopColor(color.hex);
-          }}
+          onChange={(color) =>
+            dispatch(setColor({ target: "caseTop", color: color.hex }))
+          }
         />
       </div>
       <div>
@@ -75,13 +76,13 @@ function Menu({ luminosity, setLuminosity }: Props) {
           Case top color
         </label>
         <Compact
-          color={caseBottomColor}
+          color={colors.caseBottom}
           style={{
             backgroundColor: "#323232",
           }}
-          onChange={(color) => {
-            setCaseBottomColor(color.hex);
-          }}
+          onChange={(color) =>
+            dispatch(setColor({ target: "caseBottom", color: color.hex }))
+          }
         />
       </div>
     </div>
