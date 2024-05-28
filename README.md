@@ -17,9 +17,9 @@ npm run dev
 # 🛣️ Road map 🛣️
 
 ## Mvp:
-1. Import and display blender model
-2. Create menu to update materials
-3. Create animations on pressing keys
+1. Deploy it !
+2. Improve animations on pressing keys
+3. Click and update a specific item
 4. Create an export to png
 
 ## Later:
