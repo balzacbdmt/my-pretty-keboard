@@ -1,5 +1,4 @@
 import Compact from "@uiw/react-color-compact";
-import { useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { RootState } from "../../reducers/store";
 import { setColor } from "../../reducers/colors";
