@@ -17,12 +17,11 @@ npm run dev
 # 🛣️ Road map 🛣️
 
 ## Mvp:
-1. Deploy it !
-2. Improve animations on pressing keys
-3. Click and update a specific item
-4. Create an export to png
+1. Improve animations on pressing keys
+2. Click and update a specific element
+3. Export to png
 
 ## Later:
-1. Improve the scene
+1. Improve the scene "view in scene mode"
 2. Create a demo mode
 3. Save configuration in back-end or local storage
