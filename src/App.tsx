@@ -1,9 +1,10 @@
 import Scene from "./views/scene/Scene";
 import Modal from "./components/modal/Modal";
 import Menu from "./views/menu/Menu";
+import { useState } from "react";
 
 function App() {
-  const [displayWarn, setDisplayWarn] = useState(false);
+  const [displayWarn, setDisplayWarn] = useState(true);
 
   return (
     <>
