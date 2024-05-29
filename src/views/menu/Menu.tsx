@@ -7,7 +7,8 @@ import { setKeyTestMode, setLuminosity } from "../../reducers/settings";
 
 function Menu() {
   const dispatch = useDispatch();
-  const { colors, settings } = useSelector((state: RootState) => state);
+  const colors = useSelector((state: RootState) => state.colors);
+  const settings = useSelector((state: RootState) => state.settings);
 
   return (
     <div className="fixed bottom-0 w-5/6 left-1/2 -translate-x-1/2 h-[180px] bg-zinc-900 p-2 rounded-t-2xl shadow-2xl flex gap-4 justify-center items-center">

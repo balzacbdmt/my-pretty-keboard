@@ -8,7 +8,8 @@ import { degToRad } from "three/src/math/MathUtils.js";
 
 function Keyboard() {
   const { nodes, scene } = useGLTF("/models/keyboard.glb");
-  const { colors, settings } = useSelector((state: RootState) => state);
+  const colors = useSelector((state: RootState) => state.colors);
+  const { keyTestMode } = useSelector((state: RootState) => state.settings);
 
   // Define the mapping between colors state properties and target keys
   const colorMapping = {
@@ -63,7 +64,7 @@ function Keyboard() {
 
       moveKeyOnYAxis(key.name, key.text, "down");
 
-      if (settings.keyTestMode) {
+      if (keyTestMode) {
         updateNodeColor(key.name, new MeshStandardMaterial({ color: "green" }));
       }
     };
@@ -84,7 +85,7 @@ function Keyboard() {
       window.removeEventListener("keydown", onKeyDown);
       window.removeEventListener("keyup", onKeyUp);
     };
-  }, [settings]);
+  }, [keyTestMode]);
 
   // Update nodes color when a color is updated
   useEffect(() => {
@@ -96,10 +97,10 @@ function Keyboard() {
 
   // Reset keys color on turning off the key test mode
   useEffect(() => {
-    if (settings.keyTestMode === false) {
+    if (keyTestMode === false) {
       updateGroupNodeColor("key", colors.keys);
     }
-  }, [settings.keyTestMode]);
+  }, [keyTestMode]);
 
   // Traverse the scene to set castShadow and receiveShadow on all mesh children
   useEffect(() => {

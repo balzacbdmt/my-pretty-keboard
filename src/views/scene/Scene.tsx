@@ -10,7 +10,7 @@ import { RootState } from "../../reducers/store";
 import Lamp from "./Lamp";
 
 function Scene() {
-  const { settings } = useSelector((state: RootState) => state);
+  const { luminosity } = useSelector((state: RootState) => state.settings);
   const [maxDistance, setMaxDistance] = useState(2);
 
   const handleAnimationIsComplete = () => {
@@ -28,9 +28,9 @@ function Scene() {
           maxDistance={maxDistance}
           minDistance={0.375}
         />
-        <ambientLight args={["#ffffff", settings.luminosity / 2]} />
+        <ambientLight args={["#ffffff", luminosity / 2]} />
         <spotLight
-          args={["#ffffff", settings.luminosity, -5, degToRad(45), 0.4]}
+          args={["#ffffff", luminosity, -5, degToRad(45), 0.4]}
           position={[-0.5, 0.4, -0.15]}
           castShadow
         />
