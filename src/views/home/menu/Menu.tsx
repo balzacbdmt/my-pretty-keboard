@@ -1,9 +1,9 @@
 import Compact from "@uiw/react-color-compact";
 import { useDispatch, useSelector } from "react-redux";
-import { RootState } from "../../reducers/store";
-import { setColor } from "../../reducers/colors";
-import Switch from "../../components/switch/Switch";
-import { setKeyTestMode, setLuminosity } from "../../reducers/settings";
+import { RootState } from "../../../reducers/store";
+import { setColor } from "../../../reducers/colors";
+import Switch from "../../../components/switch/Switch";
+import { setKeyTestMode, setLuminosity } from "../../../reducers/settings";
 
 function Menu() {
   const dispatch = useDispatch();

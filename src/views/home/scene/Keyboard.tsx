@@ -2,8 +2,8 @@ import { useGLTF } from "@react-three/drei";
 import { useEffect } from "react";
 import { useSelector } from "react-redux";
 import { Mesh, MeshStandardMaterial } from "three";
-import { RootState } from "../../reducers/store";
-import { keyMapping } from "../../constants/keyMapping";
+import { RootState } from "../../../reducers/store";
+import { keyMapping } from "../../../constants/keyMapping";
 import { degToRad } from "three/src/math/MathUtils.js";
 
 function Keyboard() {

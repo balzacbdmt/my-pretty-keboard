@@ -6,7 +6,7 @@ import { degToRad } from "three/src/math/MathUtils.js";
 import Camera from "./Camera";
 import { useState } from "react";
 import { useSelector } from "react-redux";
-import { RootState } from "../../reducers/store";
+import { RootState } from "../../../reducers/store";
 import Lamp from "./Lamp";
 
 function Scene() {
