@@ -85,6 +85,14 @@ function Keyboard() {
     }
   }, [settings.keyTestMode]);
 
+  // Traverse the scene to set castShadow and receiveShadow on all mesh children
+  useEffect(() => {
+    scene.traverse((child) => {
+      child.castShadow = true;
+      child.receiveShadow = true;
+    });
+  }, [scene]);
+
   return (
     <group ref={groupRef}>
       <primitive

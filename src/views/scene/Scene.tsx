@@ -1,4 +1,4 @@
-import { OrbitControls, Sphere } from "@react-three/drei";
+import { OrbitControls } from "@react-three/drei";
 import { Canvas } from "@react-three/fiber";
 import Keyboard from "./Keyboard";
 import Floor from "./Floor";
@@ -7,6 +7,7 @@ import Camera from "./Camera";
 import { useState } from "react";
 import { useSelector } from "react-redux";
 import { RootState } from "../../reducers/store";
+import Lamp from "./Lamp";
 
 function Scene() {
   const { settings } = useSelector((state: RootState) => state);
@@ -27,14 +28,15 @@ function Scene() {
           maxDistance={maxDistance}
           minDistance={0.375}
         />
-
-        <ambientLight args={["white", settings.luminosity]} />
-        <directionalLight position={[-0.25, 0.2, 0.25]} intensity={settings.luminosity}>
-          <Sphere args={[1]} visible={false} />
-        </directionalLight>
-
-        <Floor />
+        <ambientLight args={["#ffffff", settings.luminosity / 2]} />
+        <spotLight
+          args={["#ffffff", settings.luminosity, -5, degToRad(45), 0.4]}
+          position={[-0.5, 0.4, -0.15]}
+          castShadow
+        />
         <Keyboard />
+        <Floor />
+        <Lamp />
       </Canvas>
     </div>
   );

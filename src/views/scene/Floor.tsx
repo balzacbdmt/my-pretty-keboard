@@ -10,7 +10,7 @@ function Floor() {
   texture.repeat.set(10, 10);
 
   return (
-    <Plane args={[1, 0.5]} rotation-x={degToRad(-90)}>
+    <Plane args={[1, 0.5]} rotation-x={degToRad(-90)} receiveShadow>
       <meshStandardMaterial attach="material" map={texture} />
     </Plane>
   );
