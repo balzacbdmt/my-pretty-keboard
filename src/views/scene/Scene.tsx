@@ -5,12 +5,11 @@ import Floor from "./Floor";
 import { degToRad } from "three/src/math/MathUtils.js";
 import Camera from "./Camera";
 import { useState } from "react";
+import { useSelector } from "react-redux";
+import { RootState } from "../../reducers/store";
 
-interface Props {
-  luminosity: number;
-}
-
-function Scene({ luminosity }: Props) {
+function Scene() {
+  const { settings } = useSelector((state: RootState) => state);
   const [maxDistance, setMaxDistance] = useState(2);
 
   const handleAnimationIsComplete = () => {
@@ -29,8 +28,8 @@ function Scene({ luminosity }: Props) {
           minDistance={0.375}
         />
 
-        <ambientLight args={["white", luminosity]} />
-        <directionalLight position={[-0.25, 0.2, 0.25]} intensity={luminosity}>
+        <ambientLight args={["white", settings.luminosity]} />
+        <directionalLight position={[-0.25, 0.2, 0.25]} intensity={settings.luminosity}>
           <Sphere args={[1]} visible={false} />
         </directionalLight>
 

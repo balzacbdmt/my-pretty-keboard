@@ -1,16 +1,14 @@
 import Scene from "./views/scene/Scene";
 import Modal from "./components/modal/Modal";
-import { useState } from "react";
 import Menu from "./views/menu/Menu";
 
 function App() {
   const [displayWarn, setDisplayWarn] = useState(false);
-  const [luminosity, setLuminosity] = useState(3);
 
   return (
     <>
-      <Scene luminosity={luminosity} />
-      <Menu luminosity={luminosity} setLuminosity={setLuminosity} />
+      <Scene />
+      <Menu />
       {displayWarn && (
         <Modal
           title="Project under dev 🚧"

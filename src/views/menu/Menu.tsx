@@ -3,14 +3,9 @@ import { useDispatch, useSelector } from "react-redux";
 import { RootState } from "../../reducers/store";
 import { setColor } from "../../reducers/colors";
 import Switch from "../../components/switch/Switch";
-import { setKeyTestMode } from "../../reducers/settings";
+import { setKeyTestMode, setLuminosity } from "../../reducers/settings";
 
-interface Props {
-  luminosity: number;
-  setLuminosity: (l: number) => void;
-}
-
-function Menu({ luminosity, setLuminosity }: Props) {
+function Menu() {
   const dispatch = useDispatch();
   const { colors, settings } = useSelector((state: RootState) => state);
 
@@ -26,8 +21,8 @@ function Menu({ luminosity, setLuminosity }: Props) {
           name="luminosity"
           min="0"
           max="6"
-          value={luminosity}
-          onChange={(e) => setLuminosity(Number(e.target.value))}
+          value={settings.luminosity}
+          onChange={(e) => dispatch(setLuminosity(Number(e.target.value)))}
         />
         <label className="font-semibold">Test mode</label>
         <Switch
