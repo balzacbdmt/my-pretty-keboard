@@ -12,7 +12,7 @@ function Keyboard() {
   const { nodes, scene, animations } = useGLTF("/models/keyboard.glb");
   const { actions } = useAnimations(animations, groupRef);
   const { colors, settings } = useSelector((state: RootState) => state);
-  
+
   // Define the mapping between colors state properties and target keys
   const colorMapping = {
     keys: "key",
@@ -90,7 +90,7 @@ function Keyboard() {
       <primitive
         object={scene}
         position={[0, 0.018, 0]}
-        rotation={[0, 0, degToRad(-2)]}
+        rotation={[0, degToRad(90), degToRad(-2)]}
       />
     </group>
   );
