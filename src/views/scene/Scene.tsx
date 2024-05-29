@@ -1,5 +1,5 @@
-import { OrbitControls, PerspectiveCamera, Sphere } from "@react-three/drei";
-import { Canvas, useFrame } from "@react-three/fiber";
+import { OrbitControls, Sphere } from "@react-three/drei";
+import { Canvas } from "@react-three/fiber";
 import Keyboard from "./Keyboard";
 import Floor from "./Floor";
 import { degToRad } from "three/src/math/MathUtils.js";
