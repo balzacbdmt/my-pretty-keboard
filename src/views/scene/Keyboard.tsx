@@ -1,16 +1,13 @@
-import { useAnimations, useGLTF } from "@react-three/drei";
-import { useEffect, useRef } from "react";
+import { useGLTF } from "@react-three/drei";
+import { useEffect } from "react";
 import { useSelector } from "react-redux";
-import { LoopOnce, Mesh, MeshStandardMaterial } from "three";
+import { Mesh, MeshStandardMaterial } from "three";
 import { RootState } from "../../reducers/store";
-import { keyActions } from "../../constants/keyActions";
+import { keyMapping } from "../../constants/keyMapping";
 import { degToRad } from "three/src/math/MathUtils.js";
 
 function Keyboard() {
-  // TODO Find a way to correctly type the useRef for a R3F group
-  const groupRef = useRef<any>();
-  const { nodes, scene, animations } = useGLTF("/models/keyboard.glb");
-  const { actions } = useAnimations(animations, groupRef);
+  const { nodes, scene } = useGLTF("/models/keyboard.glb");
   const { colors, settings } = useSelector((state: RootState) => state);
 
   // Define the mapping between colors state properties and target keys
@@ -42,31 +39,50 @@ function Keyboard() {
     nodesId.forEach((id) => updateNodeColor(id, material));
   };
 
-  // Play a specific animation
-  const playAnimation = (animation: string) => {
-    actions[animation]?.setLoop(LoopOnce, 1);
-    actions[animation]?.play().reset();
+  // Move specific key on Y axis
+  const moveKeyOnYAxis = (
+    keyId: string,
+    textId: string,
+    direction: "up" | "down"
+  ) => {
+    const offset = direction === "down" ? -0.003 : 0.003;
+    const keyMesh = scene.getObjectByName(keyId) as Mesh | null;
+    const keyText = scene.getObjectByName(textId) as Mesh | null;
+
+    if (keyMesh) keyMesh.position.y += offset;
+    if (keyText) keyText.position.y += offset;
   };
 
-  // Key down listener
+  // Key listener
   useEffect(() => {
     const onKeyDown = (event: KeyboardEvent) => {
-      const action = keyActions[event.code];
-      if (action) {
-        playAnimation(action.animation);
-        if (settings.keyTestMode) {
-          updateNodeColor(
-            action.node,
-            new MeshStandardMaterial({ color: "green" })
-          );
-        }
+      const { code } = event;
+      const key = keyMapping[code];
+
+      if (!key) return;
+
+      moveKeyOnYAxis(key.name, key.text, "down");
+
+      if (settings.keyTestMode) {
+        updateNodeColor(key.name, new MeshStandardMaterial({ color: "green" }));
       }
     };
 
+    const onKeyUp = (event: KeyboardEvent) => {
+      const { code } = event;
+      const key = keyMapping[code];
+
+      if (!key) return;
+
+      moveKeyOnYAxis(key.name, key.text, "up");
+    };
+
     window.addEventListener("keydown", onKeyDown);
+    window.addEventListener("keyup", onKeyUp);
 
     return () => {
       window.removeEventListener("keydown", onKeyDown);
+      window.removeEventListener("keyup", onKeyUp);
     };
   }, [settings]);
 
@@ -94,13 +110,11 @@ function Keyboard() {
   }, [scene]);
 
   return (
-    <group ref={groupRef}>
-      <primitive
-        object={scene}
-        position={[0, 0.018, 0]}
-        rotation={[0, degToRad(90), degToRad(-2)]}
-      />
-    </group>
+    <primitive
+      object={scene}
+      position={[0, 0.018, 0]}
+      rotation={[0, degToRad(90), degToRad(-2)]}
+    />
   );
 }
 
