@@ -1,7 +1,7 @@
 import { OrbitControls } from "@react-three/drei";
 import { Canvas } from "@react-three/fiber";
 import Keyboard from "./Keyboard";
-import Floor from "./Floor";
+import Desktop from "./Desktop";
 import { degToRad } from "three/src/math/MathUtils.js";
 import Camera from "./Camera";
 import { useState } from "react";
@@ -35,7 +35,7 @@ function Scene() {
           castShadow
         />
         <Keyboard />
-        <Floor />
+        <Desktop />
         <Lamp />
       </Canvas>
     </div>

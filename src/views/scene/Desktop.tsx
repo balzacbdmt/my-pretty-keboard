@@ -1,8 +1,7 @@
-import { Plane, useTexture } from "@react-three/drei";
+import { Box, useTexture } from "@react-three/drei";
 import { RepeatWrapping } from "three";
-import { degToRad } from "three/src/math/MathUtils.js";
 
-function Floor() {
+function Desktop() {
   const texture = useTexture("/textures/dark_wood_4k.jpg");
 
   texture.wrapS = RepeatWrapping;
@@ -10,10 +9,10 @@ function Floor() {
   texture.repeat.set(10, 10);
 
   return (
-    <Plane args={[1, 0.5]} rotation-x={degToRad(-90)} receiveShadow>
+    <Box args={[1, 0.01, 0.5]} position={[0, -0.005, 0]} receiveShadow>
       <meshStandardMaterial attach="material" map={texture} />
-    </Plane>
+    </Box>
   );
 }
 
-export default Floor;
+export default Desktop;
