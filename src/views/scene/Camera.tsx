@@ -7,6 +7,7 @@ interface Props {
 }
 
 function Camera({ handleAnimationIsComplete }: Props) {
+  // TODO Find a way to correctly type the useRef for a R3F group
   const cameraRef = useRef<any>();
 
   useEffect(() => {
