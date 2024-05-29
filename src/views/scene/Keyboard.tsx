@@ -4,6 +4,7 @@ import { useSelector } from "react-redux";
 import { LoopOnce, Mesh, MeshStandardMaterial } from "three";
 import { RootState } from "../../reducers/store";
 import { keyActions } from "../../constants/keyActions";
+import { degToRad } from "three/src/math/MathUtils.js";
 
 function Keyboard() {
   // TODO Find a way to correctly type the useRef for a R3F group
@@ -88,8 +89,8 @@ function Keyboard() {
     <group ref={groupRef}>
       <primitive
         object={scene}
-        position={[0, 0, 0]}
-        rotation={[0, 1.77, 1.2]}
+        position={[0, 0.018, 0]}
+        rotation={[0, 0, degToRad(-2)]}
       />
     </group>
   );
