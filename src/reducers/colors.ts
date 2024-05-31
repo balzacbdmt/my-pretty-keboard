@@ -7,7 +7,7 @@ interface ColorsState {
   caseBottom: string;
 }
 
-interface SetColorPayload {
+interface SetColorsPayload {
   target: keyof ColorsState;
   color: string;
 }
@@ -19,17 +19,17 @@ const initialState: ColorsState = {
   caseBottom: "#fff",
 };
 
-const colorSlice = createSlice({
+const colorsSlice = createSlice({
   name: "color",
   initialState,
   reducers: {
-    setColor: (state, action: PayloadAction<SetColorPayload>) => {
+    setColor: (state, action: PayloadAction<SetColorsPayload>) => {
       const { target, color } = action.payload;
       state[target] = color;
     },
   },
 });
 
-export const { setColor } = colorSlice.actions;
+export const { setColor } = colorsSlice.actions;
 
-export default colorSlice.reducer;
+export default colorsSlice.reducer;
