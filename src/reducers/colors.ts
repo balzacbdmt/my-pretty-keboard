@@ -20,7 +20,7 @@ const initialState: ColorsState = {
 };
 
 const colorsSlice = createSlice({
-  name: "color",
+  name: "colors",
   initialState,
   reducers: {
     setColor: (state, action: PayloadAction<SetColorsPayload>) => {
