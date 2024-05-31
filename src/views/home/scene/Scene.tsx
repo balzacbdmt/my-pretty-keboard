@@ -18,7 +18,7 @@ function Scene() {
   };
 
   return (
-    <div className="h-screen">
+    <div className="h-screen cursor-grabbing">
       <Canvas shadows>
         <Camera handleAnimationIsComplete={handleAnimationIsComplete} />
         <OrbitControls
