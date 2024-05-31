@@ -6,6 +6,7 @@ import { setKeyTestMode, setLuminosity } from "../../../reducers/settings";
 import { useState } from "react";
 import Button from "../../../components/button/button";
 import ColorField from "../../../components/colorField/ColorField";
+import ColorsBox from "../../../components/colorsBox/colorsBox";
 
 function Menu() {
   const dispatch = useDispatch();
@@ -60,6 +61,7 @@ function Menu() {
             />
           </div>
           {colorsRow}
+          <ColorsBox />
         </div>
       )}
     </div>
