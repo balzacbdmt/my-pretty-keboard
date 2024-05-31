@@ -1,17 +1,17 @@
 import { createSlice } from "@reduxjs/toolkit";
 
-interface ProgressState {
+interface SettingsState {
   luminosity: number;
   keyTestMode: boolean;
 }
 
-const initialState: ProgressState = {
+const initialState: SettingsState = {
   luminosity: 2,
   keyTestMode: false,
 };
 
-const progressSlice = createSlice({
-  name: "progress",
+const settingsSlice = createSlice({
+  name: "Settings",
   initialState,
   reducers: {
     setKeyTestMode: (state, action) => {
@@ -23,6 +23,6 @@ const progressSlice = createSlice({
   },
 });
 
-export const { setKeyTestMode, setLuminosity } = progressSlice.actions;
+export const { setKeyTestMode, setLuminosity } = settingsSlice.actions;
 
-export default progressSlice.reducer;
+export default settingsSlice.reducer;

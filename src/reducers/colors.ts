@@ -1,6 +1,6 @@
 import { createSlice, PayloadAction } from "@reduxjs/toolkit";
 
-interface ProgressState {
+interface ColorsState {
   keys: string;
   letters: string;
   caseTop: string;
@@ -8,19 +8,19 @@ interface ProgressState {
 }
 
 interface SetColorPayload {
-  target: keyof ProgressState;
+  target: keyof ColorsState;
   color: string;
 }
 
-const initialState: ProgressState = {
+const initialState: ColorsState = {
   keys: "#fff",
   letters: "#000",
   caseTop: "#999",
   caseBottom: "#fff",
 };
 
-const progressSlice = createSlice({
-  name: "progress",
+const colorSlice = createSlice({
+  name: "color",
   initialState,
   reducers: {
     setColor: (state, action: PayloadAction<SetColorPayload>) => {
@@ -30,6 +30,6 @@ const progressSlice = createSlice({
   },
 });
 
-export const { setColor } = progressSlice.actions;
+export const { setColor } = colorSlice.actions;
 
-export default progressSlice.reducer;
+export default colorSlice.reducer;
