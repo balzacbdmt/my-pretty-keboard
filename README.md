@@ -2,14 +2,18 @@
 
 This web application have to goal to help people visualize their future customized keyboard.
 
+Currently live [here](https://my-pretty-keyboard.vercel.app/)
+
 # 🚀 Get started 🚀
 
 Install dependencies
+
 ```
 npm install
 ```
 
 Run the project
+
 ```
 npm run dev
 ```
@@ -17,6 +21,7 @@ npm run dev
 # 🛣️ Road map 🛣️
 
 ## TODO:
+
 1. Click and update a specific element
 2. Update desk material/texture
 3. Export to png
