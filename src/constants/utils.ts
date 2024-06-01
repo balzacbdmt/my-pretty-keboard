@@ -7,3 +7,10 @@
  * // returns "A B C"
  */
 export const join = (items: string[]) => items.join(" ");
+
+/**
+ * @returns a random id to a base-36 string
+ */
+export const generateRandomId = (): string => {
+  return Math.random().toString(36).slice(2, 11);
+};

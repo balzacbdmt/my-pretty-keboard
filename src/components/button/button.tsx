@@ -1,6 +1,6 @@
 import { MouseEventHandler } from "react";
 import { Icon } from "@iconify/react";
-import { join } from "../../constants/helpers";
+import { join } from "../../constants/utils";
 
 interface Props {
   text?: string;

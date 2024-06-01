@@ -1,5 +1,5 @@
 import { ReactNode, useState } from "react";
-import { join } from "../../constants/helpers";
+import { join } from "../../constants/utils";
 
 interface Props {
   className?: string;
