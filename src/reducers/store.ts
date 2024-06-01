@@ -1,7 +1,8 @@
 import { configureStore } from "@reduxjs/toolkit";
+import localStorageMiddleware from "../middleware/localStorage.ts";
 import colors from "./colors.ts";
 import settings from "./settings.ts";
-import localStorageMiddleware from "../middleware/localStorage.ts";
+import notifications from "./notifications.ts";
 
 const loadState = (name: string) => {
   try {
@@ -19,6 +20,7 @@ const store = configureStore({
   reducer: {
     colors,
     settings,
+    notifications,
   },
   preloadedState: {
     colors: loadState("colors"),
