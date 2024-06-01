@@ -16,12 +16,9 @@ npm run dev
 
 # 🛣️ Road map 🛣️
 
-## Mvp:
-1. Improve animations on pressing keys
-2. Click and update a specific element
+## TODO:
+1. Click and update a specific element
+2. Update desk material/texture
 3. Export to png
-
-## Later:
-1. Improve the scene "view in scene mode"
-2. Create a demo mode
-3. Save configuration in back-end or local storage
+4. Create a demo mode
+5. sharable URL
