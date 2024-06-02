@@ -54,7 +54,7 @@ function Menu() {
             />
           </div>
           <div className="flex gap-2 items-center">
-            <label className="font-semibold">Test mode</label>
+            <label className="font-semibold">Highlight mode</label>
             <Switch
               isOn={settings.keyTestMode}
               handleToggle={(v) => dispatch(setKeyTestMode(v))}
