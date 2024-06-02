@@ -8,17 +8,25 @@ import { useState } from "react";
 import { useSelector } from "react-redux";
 import { RootState } from "../../../reducers/store";
 import Lamp from "./Lamp";
+import { join } from "../../../constants/utils";
 
 function Scene() {
-  const { luminosity } = useSelector((state: RootState) => state.settings);
+  const { luminosity, pencilMode } = useSelector(
+    (state: RootState) => state.settings
+  );
   const [maxDistance, setMaxDistance] = useState(2);
 
   const handleAnimationIsComplete = () => {
     setMaxDistance(0.6);
   };
 
+  const className = join([
+    "h-screen",
+    pencilMode ? "cursor-crosshair" : "cursor-grabbing",
+  ]);
+
   return (
-    <div className="h-screen cursor-grabbing">
+    <div className={className}>
       <Canvas shadows>
         <Camera handleAnimationIsComplete={handleAnimationIsComplete} />
         <OrbitControls
