@@ -22,7 +22,7 @@ npm run dev
 
 ## TODO:
 
-1. Click and update a specific element
+1. Reset button
 2. Update desk material/texture
 3. Export to png
 4. Create a demo mode
