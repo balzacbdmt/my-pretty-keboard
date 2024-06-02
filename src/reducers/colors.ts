@@ -1,14 +1,22 @@
 import { createSlice, PayloadAction } from "@reduxjs/toolkit";
 
+type CustomElement = {
+  id: string;
+  color: string;
+};
+
 interface ColorsState {
   keys: string;
   letters: string;
   caseTop: string;
   caseBottom: string;
+  customElements: CustomElement[];
 }
 
+export type ColorName = "keys" | "letters" | "caseTop" | "caseBottom";
+
 interface SetColorsPayload {
-  target: keyof ColorsState;
+  target: ColorName;
   color: string;
 }
 
@@ -17,6 +25,7 @@ const initialState: ColorsState = {
   letters: "#000",
   caseTop: "#999",
   caseBottom: "#fff",
+  customElements: [],
 };
 
 const colorsSlice = createSlice({
@@ -27,9 +36,15 @@ const colorsSlice = createSlice({
       const { target, color } = action.payload;
       state[target] = color;
     },
+    addCustomElement: (state, action: PayloadAction<CustomElement>) => {
+      state.customElements = [
+        ...state.customElements.filter((ce) => ce.id !== action.payload.id),
+        action.payload,
+      ];
+    },
   },
 });
 
-export const { setColor } = colorsSlice.actions;
+export const { setColor, addCustomElement } = colorsSlice.actions;
 
 export default colorsSlice.reducer;
