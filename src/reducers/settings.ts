@@ -11,7 +11,7 @@ const initialState: SettingsState = {
   luminosity: 2,
   keyTestMode: false,
   pencilMode: false,
-  pencilColor: "",
+  pencilColor: "#999",
 };
 
 const settingsSlice = createSlice({
