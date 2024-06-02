@@ -1,12 +1,12 @@
 import { useDispatch, useSelector } from "react-redux";
 import { RootState } from "../../../reducers/store";
-import { setColor } from "../../../reducers/colors";
+import { ColorName, setColor } from "../../../reducers/colors";
 import Switch from "../../../components/switch/Switch";
-import { setKeyTestMode, setLuminosity } from "../../../reducers/settings";
+import { setKeyTestMode, setLuminosity, setPencilColor, setPencilMode } from "../../../reducers/settings";
 import { useState } from "react";
 import Button from "../../../components/button/button";
-import ColorField from "../../../components/colorField/ColorField";
 import ColorsBox from "../../../components/colorsBox/colorsBox";
+import ColorRow from "./ColorRow";
 
 function Menu() {
   const dispatch = useDispatch();
@@ -15,18 +15,15 @@ function Menu() {
 
   const [isOpen, setIsOpen] = useState(false);
 
-  const colorsRow = Object.keys(colors).map((colorName) => {
-    const color = colorName as keyof typeof colors;
+  const colorsMapped = Object.keys(colors).map((colorName) => {
+    const color = colorName as ColorName;
     return (
-      <div className="flex gap-2 items-center" key={color}>
-        <label className="font-semibold capitalize" htmlFor={color}>
-          {color}
-        </label>
-        <ColorField
-          color={colors[color]}
-          onChange={(hex) => dispatch(setColor({ target: color, color: hex }))}
-        />
-      </div>
+      <ColorRow
+        key={color}
+        name={color}
+        value={colors[color]}
+        onChange={(hex) => dispatch(setColor({ target: color, color: hex }))}
+      />
     );
   });
 
@@ -60,8 +57,23 @@ function Menu() {
               handleToggle={(v) => dispatch(setKeyTestMode(v))}
             />
           </div>
-          {colorsRow}
+          {colorsMapped}
           <ColorsBox />
+          <div className="flex gap-2 items-center">
+            <label className="font-semibold">Pencil mode</label>
+            <Switch
+              isOn={settings.pencilMode}
+              handleToggle={(v) => dispatch(setPencilMode(v))}
+            />
+          </div>
+          <ColorRow
+            key={"pencilColor"}
+            name={"pencilColor"}
+            value={settings.pencilColor}
+            onChange={(hex) =>
+              dispatch(setPencilColor(hex))
+            }
+          />
         </div>
       )}
     </div>
