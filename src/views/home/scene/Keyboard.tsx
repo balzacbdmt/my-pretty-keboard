@@ -1,15 +1,20 @@
 import { useGLTF } from "@react-three/drei";
 import { useEffect } from "react";
-import { useSelector } from "react-redux";
-import { Mesh, MeshStandardMaterial } from "three";
+import { useDispatch, useSelector } from "react-redux";
+import { Mesh, MeshStandardMaterial, Vector2 } from "three";
 import { RootState } from "../../../reducers/store";
 import { keyMapping } from "../../../constants/keyMapping";
 import { degToRad } from "three/src/math/MathUtils.js";
+import { useThree } from "@react-three/fiber";
+import { addCustomElement, ColorName } from "../../../reducers/colors";
 
 function Keyboard() {
+  const dispatch = useDispatch();
   const { nodes, scene } = useGLTF("/models/keyboard.glb");
   const colors = useSelector((state: RootState) => state.colors);
+  const settings = useSelector((state: RootState) => state.settings);
   const { keyTestMode } = useSelector((state: RootState) => state.settings);
+  const { raycaster, camera } = useThree();
 
   // Define the mapping between colors state properties and target keys
   const colorMapping = {
@@ -37,7 +42,17 @@ function Keyboard() {
       key.includes(`_${target}`)
     );
     const material = new MeshStandardMaterial({ color });
-    nodesId.forEach((id) => updateNodeColor(id, material));
+    nodesId.forEach((id) => {
+      const customColor = colors.customElements.find((ce) => ce.id === id);
+      if (customColor) {
+        const customMaterial = new MeshStandardMaterial({
+          color: customColor.color,
+        });
+        updateNodeColor(id, customMaterial);
+        return;
+      }
+      updateNodeColor(id, material);
+    });
   };
 
   // Move specific key on Y axis
@@ -90,7 +105,7 @@ function Keyboard() {
   // Update nodes color when a color is updated
   useEffect(() => {
     Object.keys(colors).forEach((key) => {
-      const target = key as keyof typeof colors;
+      const target = key as ColorName;
       updateGroupNodeColor(colorMapping[target], colors[target]);
     });
   }, [colors]);
@@ -110,11 +125,34 @@ function Keyboard() {
     });
   }, [scene]);
 
+  // Update material of the clicked mesh
+  const onClick = (event: MouseEvent) => {
+    const mouse = new Vector2(
+      (event.clientX / window.innerWidth) * 2 - 1,
+      -(event.clientY / window.innerHeight) * 2 + 1
+    );
+
+    raycaster.setFromCamera(mouse, camera);
+    const intersects = raycaster.intersectObjects(scene.children, true);
+
+    if (intersects.length <= 0) {
+      return;
+    }
+
+    const pointedElement = intersects[0].object;
+    const material = new MeshStandardMaterial({ color: settings.pencilColor });
+    dispatch(
+      addCustomElement({ id: pointedElement.name, color: settings.pencilColor })
+    );
+    updateNodeColor(pointedElement.name, material);
+  };
+
   return (
     <primitive
       object={scene}
       position={[0, 0.018, 0]}
       rotation={[0, degToRad(90), degToRad(-2)]}
+      onClick={settings.pencilMode && onClick}
     />
   );
 }
