@@ -1,6 +1,6 @@
 import { useDispatch, useSelector } from "react-redux";
 import { RootState } from "../../../reducers/store";
-import { ColorName, setColor } from "../../../reducers/colors";
+import { ColorName, resetColors, setColor } from "../../../reducers/colors";
 import Switch from "../../../components/switch/Switch";
 import { setKeyTestMode, setLuminosity, setPencilColor, setPencilMode } from "../../../reducers/settings";
 import { useState } from "react";
@@ -74,6 +74,7 @@ function Menu() {
               dispatch(setPencilColor(hex))
             }
           />
+          <Button text="Reset colors" onClick={() => dispatch(resetColors())} />
         </div>
       )}
     </div>

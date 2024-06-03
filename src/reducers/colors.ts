@@ -42,9 +42,10 @@ const colorsSlice = createSlice({
         action.payload,
       ];
     },
+    resetColors: () => initialState,
   },
 });
 
-export const { setColor, addCustomElement } = colorsSlice.actions;
+export const { setColor, addCustomElement, resetColors } = colorsSlice.actions;
 
 export default colorsSlice.reducer;

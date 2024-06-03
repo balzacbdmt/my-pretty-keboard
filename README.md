@@ -22,8 +22,7 @@ npm run dev
 
 ## TODO:
 
-1. Reset button
-2. Update desk material/texture
-3. Export to png
-4. Create a demo mode
-5. sharable URL
+1. Update desk material/texture
+2. Export to png
+3. Create a demo mode
+4. sharable URL
