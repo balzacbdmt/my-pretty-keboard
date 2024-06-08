@@ -2,7 +2,12 @@ import { useDispatch, useSelector } from "react-redux";
 import { RootState } from "../../../reducers/store";
 import { ColorName, resetColors, setColor } from "../../../reducers/colors";
 import Switch from "../../../components/switch/Switch";
-import { setKeyTestMode, setLuminosity, setPencilColor, setPencilMode } from "../../../reducers/settings";
+import {
+  setKeyTestMode,
+  setLuminosity,
+  setPencilColor,
+  setPencilMode,
+} from "../../../reducers/settings";
 import { useState } from "react";
 import Button from "../../../components/button/button";
 import ColorsBox from "../../../components/colorsBox/colorsBox";
@@ -17,14 +22,16 @@ function Menu() {
 
   const colorsMapped = Object.keys(colors).map((colorName) => {
     const color = colorName as ColorName;
-    return (
-      <ColorRow
-        key={color}
-        name={color}
-        value={colors[color]}
-        onChange={(hex) => dispatch(setColor({ target: color, color: hex }))}
-      />
-    );
+    if (typeof colors[color] === "string") {
+      return (
+        <ColorRow
+          key={color}
+          name={color}
+          value={colors[color]}
+          onChange={(hex) => dispatch(setColor({ target: color, color: hex }))}
+        />
+      );
+    }
   });
 
   return (
@@ -70,9 +77,7 @@ function Menu() {
             key={"pencilColor"}
             name={"pencilColor"}
             value={settings.pencilColor}
-            onChange={(hex) =>
-              dispatch(setPencilColor(hex))
-            }
+            onChange={(hex) => dispatch(setPencilColor(hex))}
           />
           <Button text="Reset colors" onClick={() => dispatch(resetColors())} />
         </div>
