@@ -31,10 +31,10 @@ function ColorsBox() {
 
   return (
     <div className="flex w-full h-10">
-      {Object.values(colors).map((color, index) => (
+      {Object.values(colors).filter((c) => typeof c === "string").map((color, index, arr) => (
         <Tooltip className="flex-1" content={color} key={index}>
           <button
-            className={colorClassName(index, Object.values(colors).length)}
+            className={colorClassName(index, arr.length)}
             style={{ backgroundColor: color }}
             onClick={() => onClickColor(color)}
           />
