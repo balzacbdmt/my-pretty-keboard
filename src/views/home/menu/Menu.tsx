@@ -9,7 +9,7 @@ import {
   setPencilMode,
 } from "../../../reducers/settings";
 import { useState } from "react";
-import Button from "../../../components/button/button";
+import Button from "../../../components/button/Button";
 import ColorsBox from "../../../components/colorsBox/colorsBox";
 import ColorRow from "./ColorRow";
 
