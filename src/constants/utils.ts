@@ -29,3 +29,16 @@ export const copyToClipboard = async (text: string): Promise<boolean> => {
     return false;
   }
 };
+
+/**
+ * Transform an hex color to an RGB value
+ * @param hex #00FF00
+ * @returns rgb(0, 255, 0)
+ */
+export const hexToRgb = (hex: string): string => {
+  const bigint = parseInt(hex.slice(1), 16);
+  const r = (bigint >> 16) & 255;
+  const g = (bigint >> 8) & 255;
+  const b = bigint & 255;
+  return `rgb(${r}, ${g}, ${b})`;
+};

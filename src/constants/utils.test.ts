@@ -1,5 +1,5 @@
 import { describe, expect, test } from "vitest";
-import { generateRandomId, join } from "./utils";
+import { generateRandomId, hexToRgb, join } from "./utils";
 
 describe("Utils: join()", () => {
   test("Basic behavior, join array of string with space", () => {
@@ -40,6 +40,11 @@ describe("Utils: generateRandomId()", () => {
   });
 });
 
-
 // Add tests for copyToClipboard()
-// });
+
+describe("Utils ➡️ hexToRgb(hex)", () => {
+  test("Basic behavior, return an hex to an RGB", () => {
+    const color = "#ff00ff";
+    expect(hexToRgb(color)).toBe("rgb(255, 0, 255)");
+  });
+});
