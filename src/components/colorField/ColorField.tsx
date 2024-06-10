@@ -36,7 +36,7 @@ function ColorField({ color, onChange }: Props) {
         onClick={() => setIsOpen(!isOpen)}
       />
       {isOpen && (
-        <div className="fixed right-6 z-10 shadow-2xl" ref={paletteRef}>
+        <div data-testid="palette" className="fixed right-6 z-10 shadow-2xl" ref={paletteRef}>
           <Compact
             id="keys"
             color={color}
