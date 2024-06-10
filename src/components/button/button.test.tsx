@@ -9,6 +9,14 @@ describe("Component ➡️ Button", () => {
     expect(screen.getByText("Hello world")).toBeInTheDocument();
   });
 
+  test("icon prop add a icon in the button", () => {
+    render(<Button text="Hello world" icon="material-symbols:close" />);
+    const button = screen.getByText("Hello world");
+    // Iconify library return a span in a test environment
+    const span = button.querySelector("span");
+    expect(span).toBeInTheDocument();
+  });
+
   test("onClick handler called when clicked", () => {
     const handleClick = vitest.fn();
     render(<Button text="Hello world" onClick={handleClick} />);
