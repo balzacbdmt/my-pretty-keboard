@@ -23,6 +23,18 @@ describe("Utils: join()", () => {
       "hello world great world"
     );
   });
+
+  test("Array of numbers", () => {
+    expect(join([1, 3, 123, 0])).toBe(
+      "1 3 123 0"
+    );
+  });
+
+  test("Mix of numbers and string", () => {
+    expect(join([1, "hello", 123, "0"])).toBe(
+      "1 hello 123 0"
+    );
+  });
 });
 
 describe("Utils: generateRandomId()", () => {
